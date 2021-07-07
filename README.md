@@ -17,3 +17,6 @@ Check out the [Bitcraze crazyflie-lib-python documentation](https://www.bitcraze
 ## Contribute
 
 Everyone is encouraged to contribute to the CrazyFlie library by forking the Github repository and making a pull request or opening an issue.
+
+## Changes from Upstream
+This fork introduces a custom CRTP packet which allows users to directly control motor PWMs. Although similar to the param.set_value function, this custom function allows for all 4 motors to be set in one go instead of through 4 separate calls to param.set_value which in turn reduces latency. This will only work if the custom firmware <insert link to forked firmware repo> is used.
