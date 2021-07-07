@@ -40,6 +40,7 @@ TYPE_VELOCITY_WORLD = 1
 TYPE_ZDISTANCE = 2
 TYPE_HOVER = 5
 TYPE_POSITION = 7
+TYPE_MOTOR = 8
 
 
 class Commander():
@@ -142,3 +143,10 @@ class Commander():
         pk.data = struct.pack('<Bffff', TYPE_POSITION,
                               x, y, z, yaw)
         self._cf.send_packet(pk)
+    
+    def send_motor_setpoint(self, m1, m2, m3, m4):
+        pk = CRTPPacket()
+        pk.port = CRTPPort.COMMANDER_GENERIC
+        pk.data = struct.pack('<BHHHH', TYPE_MOTOR, m1, m2, m3, m4)
+        self._cf.send_packet(pk)
+        
